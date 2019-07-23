@@ -52,6 +52,23 @@ app.use(bodyParser.json());                                     // parse applica
 
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 
+notificationsRef.push({
+    message:"Sent CEO needs rejected",
+    priority:"2",
+    type:"rejection"
+});
+
+
+var count = 0;
+
+notificationsRef.on("child_added", function(snap) {
+count++;
+console.log("added:", snap.key);
+});
+
+
+
+
 app.get('/', function (req, res) {
 
   res.sendfile('./index.html')
@@ -113,6 +130,7 @@ res.json({message: "Success: User deleted.", result: true});
 
 app.get('/api/getNotifications', function(req, res) {
 
+    
 notificationsRef.once("value", function(snapshot) {
 
 //console.log(snapshot);
@@ -124,7 +142,6 @@ res.json({message: "Error: No user found", "result": false});
 } else {
 
 res.json({"message":"successfully fetch data", "result": true, "data": snapshot.val()});
-
 }
 
 });
