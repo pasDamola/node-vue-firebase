@@ -12,9 +12,11 @@
     "chartist": "0.11.0",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
+    "toastr": "^2.1.4",
     "vue": "^2.5.17",
     "vue-chartist": "^2.1.2",
     "vue-meta": "^1.5.2",
+    "vuefire": "^2.1.0",
     "vuetify": "^1.2.9"
   },
   "devDependencies": {
