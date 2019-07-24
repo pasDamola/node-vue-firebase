@@ -1,5 +1,5 @@
 # node-vue-nuxt-firebase
-
+  writing and fetching data to firebase real time database, obtaining real-time updates
 ## Clone the repo
   git clone <repo url>
   
