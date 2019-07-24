@@ -23,6 +23,10 @@ import Vue from 'vue'
 // Components
 import './components'
 
+// import real time data base
+import { rtdbPlugin } from 'vuefire'
+
+
 // Plugins
 import './plugins'
 
@@ -35,6 +39,7 @@ import i18n from '@/i18n'
 import router from '@/router'
 import store from '@/store'
 
+Vue.use(rtdbPlugin)
 // Sync store with router
 sync(store, router)
 

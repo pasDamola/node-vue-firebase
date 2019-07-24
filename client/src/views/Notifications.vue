@@ -232,6 +232,7 @@
 </template>
 
 <script>
+
 export default {
   data: () => ({
     color: null,

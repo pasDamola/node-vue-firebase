@@ -70,7 +70,6 @@
             <v-list dense>
               <v-list-tile
                 v-for="notification in notifications"
-                :key="notification"
                 @click="onClick"
               >
                 <v-list-tile-title
@@ -98,6 +97,8 @@ import {
   mapMutations
 } from 'vuex'
 
+import { db } from './db'
+
 const API_URL = "http://localhost:3000/api/getNotifications";
 
 
@@ -110,22 +111,34 @@ export default {
     responsiveInput: false
   }),
 
+  firebase:{
+    notifications : db.ref('notifications')
+  },
+
   watch: {
     '$route' (val) {
       this.title = val.name
-    }
+    },
+    // id: {
+    //   // call it upon creation too
+    //   immediate: true,
+    //   handler(id) {
+    //     this.$rtdbBind('user', users.child(id))
+    //   },
+    // },
   },
 
   created () {
     this.onResponsiveInverted()
     window.addEventListener('resize', this.onResponsiveInverted)
-    fetch(API_URL)
-      .then(response => response.json())
-      .then(result => {
-        for(let data in result.data){
-          this.notifications.push(data);
-        }
-      });
+    console.log(this.notifications);
+    // fetch(API_URL)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     for(let data in result.data){
+    //       this.notifications.push(data);
+    //     }
+      // });
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.onResponsiveInverted)
